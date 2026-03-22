@@ -661,6 +661,70 @@ body {
     box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
 }
 
+
+.variant-dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+<script>
+const data = {
+    moong: {
+        name: "Green Moong Sprouts",
+        price: "₹50",
+        desc: "Fresh green moong sprouts loaded with plant protein and fiber.",
+        benefits: ["High Protein", "Gut Friendly", "Low Calorie"],
+        img: "moong.png"
+    },
+    white: {
+        name: "White Chickpea Sprouts",
+        price: "₹60",
+        desc: "Protein-rich white chickpea sprouts for energy and muscle recovery.",
+        benefits: ["High Protein", "Energy Boost", "Rich in Iron"],
+        img: "whitechana.png"
+    },
+    black: {
+        name: "Black Chickpea Sprouts",
+        price: "₹60",
+        desc: "Dense nutrient-packed sprouts supporting strength and stamina.",
+        benefits: ["Muscle Support", "High Fiber", "Immunity Boost"],
+        img: "blackchana.png"
+    },
+    chawli: {
+        name: "Cowpea Sprouts (Chawli)",
+        price: "₹60",
+        desc: "Light and nutritious sprouts rich in minerals and vitamins.",
+        benefits: ["Heart Healthy", "Rich Minerals", "Natural Energy"],
+        img: "chawli.png"
+    }
+};
+
+const select = document.getElementById("variantSelect");
+
+select.addEventListener("change", function () {
+    const selected = data[this.value];
+
+    document.getElementById("productDesc").innerText = selected.desc;
+    document.getElementById("price").innerText = selected.price;
+    document.getElementById("productImage").src = selected.img;
+
+    // update benefits
+    const benefitsDiv = document.getElementById("benefits");
+    benefitsDiv.innerHTML = "";
+    selected.benefits.forEach(b => {
+        benefitsDiv.innerHTML += `<span class="benefit-tag">${b}</span>`;
+    });
+
+    // update whatsapp
+    document.getElementById("whatsappBtn").href =
+        `https://wa.me/918652204831?text=Hi,%20I%20would%20like%20to%20order%20${selected.name}%20(250g)%20-%20${selected.price}`;
+});
+</script>
+
 /* Mobile Responsive */
 @media (max-width: 767px) {
     .nav {
